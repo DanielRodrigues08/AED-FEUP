@@ -46,6 +46,7 @@ class BST {
     friend class BSTItrPost<Comparable>;
     friend class BSTItrLevel<Comparable>;
     friend class iteratorBST<Comparable>;
+    int size_aux(const BinaryNode<Comparable>* node) const;
 public:
     explicit BST(const Comparable& notFound);
     BST(const BST& rhs);
@@ -62,9 +63,12 @@ public:
     iteratorBST<Comparable> begin() const;
     iteratorBST<Comparable> end() const;
     int size(const Comparable& el) const;   //new
+
 };
 
 // Note that all "matching" is based on the < method.
+
+
 
 template <class Comparable>
 BST<Comparable>::BST(const Comparable& notFound): root(NULL), ITEM_NOT_FOUND(notFound)
@@ -460,10 +464,21 @@ bool iteratorBST<Comparable>::operator!= (const iteratorBST<Comparable>& it2) co
 
 //--------------------------------------------------------
 
+template <class Comparable>
+int BST<Comparable>::size_aux(const BinaryNode<Comparable>* val) const {
+    if(val == NULL)
+        return 0;
+    return(size_aux(val->left) + 1+ size_aux(val->right));
+}
+
 //TODO
 template <class Comparable>
 int BST<Comparable>::size(const Comparable& el) const {
-    return -1;
+    BinaryNode<Comparable>* val = find(el, root);
+    if(val == NULL)
+        return -1;
+    return size_aux(val) - 1;
 }
+
 
 #endif

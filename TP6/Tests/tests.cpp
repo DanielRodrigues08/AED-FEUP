@@ -96,11 +96,11 @@ TEST(test_1, d_updateDictionary) {
         EXPECT_EQ("pequeno mamifero roedor de cauda longa", d1.consult("esquilo", prev, next));
     }
 }
- */
+*/
 
 TEST(test_1, e_nodeSize) {
     cout<<endl<<"Testing 'nodeSize'"<<endl;
-    BST<int>  bt1(-1);
+    BST<int> bt1(-1);
     EXPECT_EQ(-1,bt1.size(4));
     bt1.insert(12);
     bt1.insert(10);
