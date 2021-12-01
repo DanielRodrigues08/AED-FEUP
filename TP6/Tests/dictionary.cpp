@@ -76,7 +76,16 @@ string Dictionary::consult(string word1, WordMean& previous, WordMean& next) con
 
 //TODO
 bool Dictionary::update(string word1, string mean1) {
-    return true;
+    auto val = words.find(WordMean(word1,""));
+    if(val == WordMean("","")) {
+        words.insert(WordMean(word1,mean1));
+        return false;
+    }else{
+        words.remove(val);
+        val.setMeaning(mean1);
+        words.insert(val);
+        return true;
+    }
 }
 
 //TODO

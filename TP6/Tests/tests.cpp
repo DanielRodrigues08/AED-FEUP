@@ -44,7 +44,7 @@ TEST(test_1, b_printDictionary) {
     f.close();
     d1.print();
 }
-*/
+
 
 TEST(test_1, c_consultDictionary) {
     cout<<endl<<"Testing 'consultDictionary'"<<endl;
@@ -68,7 +68,8 @@ TEST(test_1, c_consultDictionary) {
     EXPECT_EQ("macaco", next.getWord());
     EXPECT_EQ("mamifero da ordem dos primatas", next.getMeaning());
 }
-/*
+
+
 TEST(test_1, d_updateDictionary) {
     cout<<endl<<"Testing 'updateDictionary'"<<endl;
     ifstream f;
@@ -95,6 +96,7 @@ TEST(test_1, d_updateDictionary) {
         EXPECT_EQ("pequeno mamifero roedor de cauda longa", d1.consult("esquilo", prev, next));
     }
 }
+ */
 
 TEST(test_1, e_nodeSize) {
     cout<<endl<<"Testing 'nodeSize'"<<endl;
@@ -115,7 +117,7 @@ TEST(test_1, e_nodeSize) {
     EXPECT_EQ(8,bt1.size(12));
 }
 
-
+/*
 TEST(test_2, a_InitGame) {
     cout<<endl<<"Testing 'initGame'"<<endl;
     vector<int> points;
