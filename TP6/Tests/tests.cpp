@@ -96,7 +96,7 @@ TEST(test_1, d_updateDictionary) {
         EXPECT_EQ("pequeno mamifero roedor de cauda longa", d1.consult("esquilo", prev, next));
     }
 }
-*/
+
 
 TEST(test_1, e_nodeSize) {
     cout<<endl<<"Testing 'nodeSize'"<<endl;
@@ -116,8 +116,8 @@ TEST(test_1, e_nodeSize) {
     EXPECT_EQ(0,bt1.size(15));
     EXPECT_EQ(8,bt1.size(12));
 }
+*/
 
-/*
 TEST(test_2, a_InitGame) {
     cout<<endl<<"Testing 'initGame'"<<endl;
     vector<int> points;
@@ -131,7 +131,7 @@ TEST(test_2, a_InitGame) {
     if (game1.getGame().isEmpty() == false)
         EXPECT_EQ(1, game1.getGame().getRoot().getPoints());
 }
-
+/*
 TEST(test_2, b_Play) {
     cout<<endl<<"Testing 'playGame'"<<endl;
     vector<int> points;
