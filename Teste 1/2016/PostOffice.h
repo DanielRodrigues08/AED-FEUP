@@ -8,7 +8,24 @@
 #include "Mail.h"
 #include "Postman.h"
 #include <vector>
+#include <algorithm>
 
+using namespace std;
+
+template<class T>
+unsigned int numberDifferent (const vector<T> & v1){
+    vector<T> aux = v1;
+    sort(aux.begin(),aux.end());
+    return  unique(aux.begin(),aux.end()) - aux.begin();
+}
+
+class NoPostmanException
+{
+    string name;
+public:
+    NoPostmanException(string name){this -> name = name;}
+    string getName() const {return name; }
+};
 
 class PostOffice {
 	vector<Mail *> mailToSend;
@@ -25,9 +42,9 @@ public:
 	vector<Mail *> getMailToDeliver() const;
 	vector<Postman> getPostman() const;
 	//-------
-	//vector<Mail *> removePostman(string name);
-	//vector<Mail *> endOfDay(unsigned int &balance);
-	//Postman addMailToPostman(Mail *m, string name);
+	vector<Mail *> removePostman(string name);
+	vector<Mail *> endOfDay(unsigned int &balance);
+	Postman addMailToPostman(Mail *m, string name);
 };
 
 #endif /* SRC_POSTOFFICE_H_ */

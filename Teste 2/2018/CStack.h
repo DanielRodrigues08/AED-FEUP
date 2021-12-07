@@ -38,12 +38,24 @@ public:
         cout << endl;
     }
     void adicionaN(int n)
-	{  //Grupo 2 a)
-    	
+	{
+        int temp = peek()+1;
+        for(int i = temp; i < temp+n; i++){
+            push(i);
+        }
 	}
 	bool inverte4() 
-	{   //Grupo 2 b)
-    	
+	{
+    	if(size() < 4)
+            return false;
+        vector<int> aux;
+        for(int useless = 0; useless < 4; useless++){
+            aux.push_back(peek());
+            pop();
+        }
+        for(int useless = 0; useless < 4; useless++)
+            push(aux[useless]);
+        return true;
 	}	
 }; 
 

@@ -2,7 +2,12 @@
  * Postman.cpp
  */
 #include "Postman.h"
+#include "PostOffice.h"
+#include <string>
 
+
+
+unsigned Postman::idAux = 1;
 
 Postman::Postman(): id(0) {}
 
@@ -30,6 +35,17 @@ unsigned int Postman::getID() const{
 	return id;
 }
 
+Postman::Postman(string name):name(name) {
+    id = idAux;
+    idAux++;
+}
 
-
-
+bool Postman::operator<(const Postman &p1) {
+    vector<string> aux1;
+    vector<string> aux2;
+    for(auto idx: myMail)
+        aux1.push_back(idx->getZipCode());
+    for(auto idx: p1.getMail())
+        aux2.push_back(idx->getZipCode());
+    return numberDifferent(aux1) < numberDifferent(aux2);
+}

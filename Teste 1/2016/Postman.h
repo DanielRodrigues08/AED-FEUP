@@ -10,17 +10,20 @@
 #include <vector>
 
 class Postman {
+    static unsigned idAux;
 	unsigned int id;
 	string name;
 	vector<Mail *> myMail;
 public:
 	Postman();
+    Postman(string name);
 	void setName(string nm);
 	void addMail(Mail *m);
 	void addMail(vector<Mail *> mails);
 	string getName() const;
 	vector<Mail *> getMail() const;
 	unsigned int getID() const;
+    bool operator<(const Postman& p1);
 };
 
 

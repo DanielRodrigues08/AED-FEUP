@@ -6,6 +6,8 @@
  */
 
 #include <iostream>
+#include <string>
+#include <ostream>
 #include "Car.h"
 
 using namespace std;
@@ -84,3 +86,35 @@ HybridCar::HybridCar(string brand, string model, float price, float tank, float 
 	this->setKWh_100km(kWh_100km);
 }
 
+FuelCar::FuelCar(string brand, string model, float price, float tank, float l_100km): Car(brand, model){
+    setPrice(price);
+    this->tank = tank;
+    this->l_100km = l_100km;
+}
+
+ElectricCar::ElectricCar(string brand, string model, float price,float battery, float kWh_100km): Car(brand, model){
+    setPrice(price);
+    this->battery = battery;
+    this->kWh_100km = kWh_100km;
+}
+
+bool Car::operator==(const Car &car) const {
+    return model==car.getModel() && brand==car.getBrand();
+}
+
+float FuelCar::range() const {
+    return (100*tank)/l_100km;
+}
+
+float ElectricCar::range() const {
+    return  (100*battery)/kWh_100km;
+}
+
+float HybridCar::range() const {
+    return FuelCar::range() + ElectricCar::range();
+}
+
+ostream& operator<<(ostream& os, const Car& car){
+    os << car.getBrand() << " " << car.getModel() << " (" << car.getPrice() << ")" ;
+    return os;
+}

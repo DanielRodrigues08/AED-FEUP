@@ -52,7 +52,24 @@ Patient Doctor::removeNextPatient() {
 
 
 void Doctor::moveToFront(unsigned codP1) {
-	// TODO
+	queue<Patient> aux;
+    vector<Patient> aux_vector;
+    while(!patients.empty()){
+        if(patients.front().getCode() == codP1) {
+            aux_vector.push_back(patients.front());
+        }
+        else {
+            aux.push(patients.front());
+        }
+        patients.pop();
+    }
+    if(aux_vector.size()!=0)
+        patients.push(aux_vector[0]);
+    while(!aux.empty()){
+        patients.push(aux.front());
+        aux.pop();
+    }
+
 
 }
 

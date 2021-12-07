@@ -68,11 +68,60 @@ public:
   	}
 	void intercalar(const CSimpleList &lst) //Grupo 2 c)
 	{
-	
+        CNode* firstL = first;
+        CNode* secondL = lst.first;
+	    while(true){
+            if(secondL !=0){
+                CNode* node = new CNode(secondL->data(), firstL->next());
+                firstL->setNext(node);
+                secondL = secondL->next();
+            }
+            if(firstL != 0){
+                firstL = firstL -> next();
+                if(firstL != 0){
+                    firstL = firstL->next();
+                }
+            }
+            if(firstL == 0 && secondL == 0)
+                break;
+        }
 	}
 	int zipar() //Grupo 2 d)
 	{
-		
-	}
+        CNode* firstL = first;
+        CNode* aux;
+        unsigned int ct = 0;
+
+        while(true)
+        { // {1,1,2,2,2,3,3,3,3,4,4,7,8,8};
+            if(firstL != 0)
+            {
+                int auxInt = firstL->data();
+                aux = firstL;
+                while(true)
+                {
+                    aux = aux->next();
+                    if(aux != 0)
+                    {
+                        if (auxInt == aux->data())
+                            ct++;
+                        else
+                            break;
+                    }
+                    else
+                        break;
+                }
+
+                firstL->setNext(aux);
+                if(firstL->next() != 0)
+                    firstL = firstL->next();
+                else
+                    break;
+            }
+            else
+                break;
+        }
+        return ct;
+    }
 }; 
 

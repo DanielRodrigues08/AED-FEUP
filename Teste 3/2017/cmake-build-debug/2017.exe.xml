@@ -1,0 +1,27 @@
+<testsuites>
+	<testsuite name="AllTests" tests="7">
+		<testcase classname="AllTests" name="test_A_"/>
+		<testcase classname="AllTests" name="test_B_"/>
+		<testcase classname="AllTests" name="test_C_"/>
+		<testcase classname="AllTests" name="test_D_">
+			<failure message="C:/Users/danie/CLionProjects/AED/Teste 3/2017/Test.cpp:173 test_D_: 1 == sl1.size() expected:	1	but was:	0	">
+test_D_: 1 == sl1.size() expected:	1	but was:	0	
+			</failure>
+		</testcase>
+		<testcase classname="AllTests" name="test_E_">
+			<failure message="C:/Users/danie/CLionProjects/AED/Teste 3/2017/Test.cpp:207 test_E_: &quot;tiago.sousa@gmail.com&quot; == sl1[0].getEMail() expected:	tiago.sousa@gmail.com	but was:	t.silva@gmail.com	">
+test_E_: &quot;tiago.sousa@gmail.com&quot; == sl1[0].getEMail() expected:	tiago.sousa@gmail.com	but was:	t.silva@gmail.com	
+			</failure>
+		</testcase>
+		<testcase classname="AllTests" name="test_F_">
+			<failure message="C:/Users/danie/CLionProjects/AED/Teste 3/2017/Test.cpp:276 test_F_: 1 == o1.getActiveStudents().size() expected:	1	but was:	0	">
+test_F_: 1 == o1.getActiveStudents().size() expected:	1	but was:	0	
+			</failure>
+		</testcase>
+		<testcase classname="AllTests" name="test_G_">
+			<failure message="C:/Users/danie/CLionProjects/AED/Teste 3/2017/Test.cpp:363 test_G_: 3 == o3.mostActiveStudent(maximus) expected:	3	but was:	0	">
+test_G_: 3 == o3.mostActiveStudent(maximus) expected:	3	but was:	0	
+			</failure>
+		</testcase>
+	</testsuite>
+</testsuites>
