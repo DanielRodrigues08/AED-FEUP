@@ -1,39 +1,11 @@
 <testsuites>
 	<testsuite name="AEDA 2016/2017 - Avaliacao CI2- 23/nov - Testes Unitarios Estudantes" tests="7">
-		<testcase classname="AEDA 2016/2017 - Avaliacao CI2- 23/nov - Testes Unitarios Estudantes" name="test_A_">
-			<failure message="C:/Users/danie/CLionProjects/AED/Teste 2/2016/Test.cpp:17 test_A_: false == a1 == NULL expected:	0	but was:	1	">
-test_A_: false == a1 == NULL expected:	0	but was:	1	
-			</failure>
-		</testcase>
-		<testcase classname="AEDA 2016/2017 - Avaliacao CI2- 23/nov - Testes Unitarios Estudantes" name="test_B_">
-			<failure message="C:/Users/danie/CLionProjects/AED/Teste 2/2016/Test.cpp:55 test_B_: ceil((float) i/Purchase::BAG_SIZE) == bags1.size() expected:	1	but was:	0	">
-test_B_: ceil((float) i/Purchase::BAG_SIZE) == bags1.size() expected:	1	but was:	0	
-			</failure>
-		</testcase>
-		<testcase classname="AEDA 2016/2017 - Avaliacao CI2- 23/nov - Testes Unitarios Estudantes" name="test_C_">
-			<failure message="C:/Users/danie/CLionProjects/AED/Teste 2/2016/Test.cpp:89 test_C_: 25 == as.size() expected:	25	but was:	0	">
-test_C_: 25 == as.size() expected:	25	but was:	0	
-			</failure>
-		</testcase>
-		<testcase classname="AEDA 2016/2017 - Avaliacao CI2- 23/nov - Testes Unitarios Estudantes" name="test_D_">
-			<failure message="C:/Users/danie/CLionProjects/AED/Teste 2/2016/Test.cpp:129 test_D_: 4 == as1.size() expected:	4	but was:	0	">
-test_D_: 4 == as1.size() expected:	4	but was:	0	
-			</failure>
-		</testcase>
-		<testcase classname="AEDA 2016/2017 - Avaliacao CI2- 23/nov - Testes Unitarios Estudantes" name="test_E_">
-			<failure message="C:/Users/danie/CLionProjects/AED/Teste 2/2016/Test.cpp:188 test_E_: bar_codes[i] == (*it)-&gt;getBarCode() expected:	6	but was:	4	">
-test_E_: bar_codes[i] == (*it)-&gt;getBarCode() expected:	6	but was:	4	
-			</failure>
-		</testcase>
-		<testcase classname="AEDA 2016/2017 - Avaliacao CI2- 23/nov - Testes Unitarios Estudantes" name="test_F_">
-			<failure message="C:/Users/danie/CLionProjects/AED/Teste 2/2016/Test.cpp:211 test_F_: 7 == ass1.getToWrap().size() expected:	7	but was:	0	">
-test_F_: 7 == ass1.getToWrap().size() expected:	7	but was:	0	
-			</failure>
-		</testcase>
-		<testcase classname="AEDA 2016/2017 - Avaliacao CI2- 23/nov - Testes Unitarios Estudantes" name="test_G_">
-			<failure message="C:/Users/danie/CLionProjects/AED/Teste 2/2016/Test.cpp:255 test_G_: 1 == ass1.getToWrap().size() expected:	1	but was:	2	">
-test_G_: 1 == ass1.getToWrap().size() expected:	1	but was:	2	
-			</failure>
-		</testcase>
+		<testcase classname="AEDA 2016/2017 - Avaliacao CI2- 23/nov - Testes Unitarios Estudantes" name="test_A_"/>
+		<testcase classname="AEDA 2016/2017 - Avaliacao CI2- 23/nov - Testes Unitarios Estudantes" name="test_B_"/>
+		<testcase classname="AEDA 2016/2017 - Avaliacao CI2- 23/nov - Testes Unitarios Estudantes" name="test_C_"/>
+		<testcase classname="AEDA 2016/2017 - Avaliacao CI2- 23/nov - Testes Unitarios Estudantes" name="test_D_"/>
+		<testcase classname="AEDA 2016/2017 - Avaliacao CI2- 23/nov - Testes Unitarios Estudantes" name="test_E_"/>
+		<testcase classname="AEDA 2016/2017 - Avaliacao CI2- 23/nov - Testes Unitarios Estudantes" name="test_F_"/>
+		<testcase classname="AEDA 2016/2017 - Avaliacao CI2- 23/nov - Testes Unitarios Estudantes" name="test_G_"/>
 	</testsuite>
 </testsuites>
