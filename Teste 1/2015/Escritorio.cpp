@@ -1,7 +1,7 @@
 #include "Escritorio.h"
 #include <iostream>
-
-
+#include <algorithm>
+using namespace std;
 //Documento
 Documento::Documento(int nPag, float pP, float pA):
 			numPaginas(nPag), pPreto(pP), pAmarelo(pA)
@@ -82,4 +82,88 @@ void Escritorio::adicionaFuncionario(Funcionario f1)
 vector<Impressora *> Escritorio::getImpressoras() const
 { return impressoras; }
 
+int Escritorio::numImpressorasSemResponsavel() const {
+    int counter = 0;
+    for(auto idxImpressoras: impressoras){
+        bool res = false;
+        for(auto idxFuncionario: funcionarios){
+            for(auto idxImpressoras2: idxFuncionario.getImpressoras())
+                if(idxImpressoras->getCodigo() == idxImpressoras2->getCodigo()){
+                    res=true;
+                    break;
+                }
+            if(res)
+                break;
+        }
+        if(!res)
+            counter++;
+    }
 
+    return counter;
+}
+
+vector<Impressora*> Escritorio::retiraImpressoras(int ano1){
+    vector<Impressora*> result;
+    auto it = impressoras.begin();
+    while (it != impressoras.end()){
+        if((*it)->getAno()<ano1){
+            result.push_back(*it);
+            it = impressoras.erase(it);
+        }
+        else
+            it++;
+    }
+    return result;
+}
+
+bool  ImpressoraPB::imprime(Documento doc1) {
+    if(numPagImprimir < doc1.getNumPaginas())
+        return false;
+    numPagImprimir -= doc1.getNumPaginas();
+    docsImpressos.push_back(doc1);
+    return true;
+}
+
+bool ImpressoraCores::imprime(Documento doc1) {
+    if(numPagImprimirAmarelo < doc1.getPercentagemAmarelo()*doc1.getNumPaginas() || numPagImprimirPreto < doc1.getPercentagemPreto()*doc1.getNumPaginas())
+        return false;
+    docsImpressos.push_back(doc1);
+    numPagImprimirAmarelo -= doc1.getPercentagemAmarelo()*doc1.getNumPaginas();
+    numPagImprimirPreto -= doc1.getPercentagemPreto()*doc1.getNumPaginas();
+    return true;
+}
+
+Impressora* Escritorio::imprimeDoc(Documento doc1) const {
+    Impressora* notFound = new ImpressoraPB("inexistente",0,0);
+    for(auto idx: impressoras){
+        if(idx->imprime(doc1))
+            return idx;
+    }
+    return notFound;
+}
+
+vector<Impressora*> Escritorio::tonerBaixo() const {
+    vector<Impressora*> result;
+    for(auto idx: impressoras){
+        if(idx->lowToner())
+            result.push_back(idx);
+    }
+    return result;
+}
+
+Documento Documento::operator+(const Documento &rhs) const {
+    int nPag = numPaginas + rhs.numPaginas;
+    float pP = (pPreto * numPaginas + rhs.pPreto * rhs.numPaginas) / nPag;
+    float pA = (pAmarelo * numPaginas + rhs.pAmarelo * rhs.numPaginas) / nPag;
+
+    return Documento(nPag, pP, pA);
+}
+
+string Escritorio::operator()(string cod) const {
+    for(auto idx: funcionarios){
+        for(auto idx2: idx.getImpressoras())
+            if(idx2->getCodigo() == cod)
+                return idx.getCodigo();
+    }
+    return "nulo";
+}

@@ -4,7 +4,7 @@
 #include "Escritorio.h"
 
 void test_a_ImpressorasSemResponsavel() {
-/*	Escritorio e1;
+	Escritorio e1;
 	Impressora *imp1 = new ImpressoraPB("PBa", 2014, 25);   //codigo, ano, numPaginasToner
 	Impressora *imp2 = new ImpressoraCores("Ca", 2014, 50);   //codigo, ano, numPaginasToner
 	Impressora *imp3 = new ImpressoraPB("PBb", 2014, 100);   //codigo, ano, numPaginasToner
@@ -42,13 +42,13 @@ void test_a_ImpressorasSemResponsavel() {
 	fd.adicionaImpressora(imp3);
 	e1.adicionaFuncionario(fd);
 
-	ASSERT_EQUAL(0, e1.numImpressorasSemResponsavel());*/
+	ASSERT_EQUAL(0, e1.numImpressorasSemResponsavel());
 }
 
 
 
 void test_b_RetiraImpressoras() {
-	/*Escritorio e1;
+    Escritorio e1;
 	Impressora *imp1 = new ImpressoraPB("PBa", 2011, 100);   //codigo, ano, numPaginasToner
 	Impressora *imp2 = new ImpressoraCores("Ca", 2010, 100);   //codigo, ano, numPaginasToner
 	Impressora *imp3 = new ImpressoraPB("PBb", 2008, 100);   //codigo, ano, numPaginasToner
@@ -73,13 +73,13 @@ void test_b_RetiraImpressoras() {
 	res = e1.retiraImpressoras(2012);
 	ASSERT_EQUAL (3, res.size());
 	ASSERT_EQUAL(1,e1.getImpressoras().size());
-	ASSERT_EQUAL("PBc", e1.getImpressoras()[0]->getCodigo());*/
+	ASSERT_EQUAL("PBc", e1.getImpressoras()[0]->getCodigo());
 }
 
 
 
 void test_c_ImprimeDoc() {
-	/* Documento docPB1(100, 1, 0);  //numPaginas, pPreto, PAmarelo
+	 Documento docPB1(100, 1, 0);  //numPaginas, pPreto, PAmarelo
 	 Documento docPB2(40, 1, 0);  //numPaginas, pPreto, PAmarelo
 	 Documento docC1(90, 0.8, 0.2);  //numPaginas, pPreto, PAmarelo
 	 Documento docC2(90, 0.2, 0.8);  //numPaginas, pPreto, PAmarelo
@@ -101,13 +101,13 @@ void test_c_ImprimeDoc() {
 	 ASSERT_EQUAL(true,impC.imprime(docC2));
 	 ASSERT_EQUAL(2,impC.getDocumentosImpressos().size());
 	 ASSERT_EQUAL(28,impC.getNumPaginasImprimir());
-	 ASSERT_EQUAL(false,impC.imprime(docC1));*/
+	 ASSERT_EQUAL(false,impC.imprime(docC1));
 }
 
 
 
 void test_d_ImpressoraImpressaoDoc() {
-	/*Escritorio e1;
+	Escritorio e1;
 	Impressora *imp1 = new ImpressoraPB("PBa", 2014, 100);   //codigo, ano, numPaginasToner
 	Impressora *imp2 = new ImpressoraCores("Ca", 2014, 200);   //codigo, ano, numPaginasToner
 	Impressora *imp3 = new ImpressoraPB("PBb", 2014, 200);   //codigo, ano, numPaginasToner
@@ -141,13 +141,13 @@ void test_d_ImpressoraImpressaoDoc() {
 	ASSERT_EQUAL(2, res->getDocumentosImpressos().size());
 
 	res =e1.imprimeDoc(docPB2);
-	ASSERT_EQUAL("inexistente",res->getCodigo());*/
+	ASSERT_EQUAL("inexistente",res->getCodigo());
 }
 
 
 
 void test_e_TonerBaixo() {
-	/*Escritorio e1;
+	Escritorio e1;
 	Impressora *imp1 = new ImpressoraPB("PBa", 2014, 25);   //codigo, ano, numPaginasToner
 	Impressora *imp2 = new ImpressoraCores("Ca", 2014, 50);   //codigo, ano, numPaginasToner
 	Impressora *imp3 = new ImpressoraPB("PBb", 2014, 100);   //codigo, ano, numPaginasToner
@@ -174,13 +174,13 @@ void test_e_TonerBaixo() {
 	res = e1.tonerBaixo();
 	ASSERT_EQUAL(3,res.size());
 	ASSERT_EQUAL(true, (res[0]->getCodigo()=="PBc" || res[1]->getCodigo()=="PBc" || res[2]->getCodigo()=="PBc"));
-	ASSERT_EQUAL(true, (res[0]->getCodigo()=="Cc" || res[1]->getCodigo()=="Cc" || res[2]->getCodigo()=="Cc"));*/
+	ASSERT_EQUAL(true, (res[0]->getCodigo()=="Cc" || res[1]->getCodigo()=="Cc" || res[2]->getCodigo()=="Cc"));
 }
 
 
 
 void test_f_OperadorMais() {
-	/*Documento d1(30,1,0);
+	Documento d1(30,1,0);
 	Documento d2(70,0.8,0.2);
 
 	Documento dx=d1+d2;
@@ -192,13 +192,13 @@ void test_f_OperadorMais() {
 	Documento dy=d1+d3;
 	ASSERT_EQUAL(80,dy.getNumPaginas());
 	ASSERT_EQUAL_DELTA(1,dy.getPercentagemPreto(),0.01);
-	ASSERT_EQUAL_DELTA(0,dy.getPercentagemAmarelo(),0.01);*/
+	ASSERT_EQUAL_DELTA(0,dy.getPercentagemAmarelo(),0.01);
 }
 
 
 
 void test_g_OperadorFuncao() {
-	/*Escritorio e1;
+	Escritorio e1;
 	Impressora *imp1 = new ImpressoraPB("PBa", 2014, 25);   //codigo, ano, numPaginasToner
 	Impressora *imp2 = new ImpressoraCores("Ca", 2014, 50);   //codigo, ano, numPaginasToner
 	Impressora *imp3 = new ImpressoraPB("PBb", 2014, 100);   //codigo, ano, numPaginasToner
@@ -221,7 +221,7 @@ void test_g_OperadorFuncao() {
 	e1.adicionaFuncionario(fc);
 
 	ASSERT_EQUAL("nulo", e1("PBx"));
-	ASSERT_EQUAL("fC", e1("Cb"));*/
+	ASSERT_EQUAL("fC", e1("Cb"));
 }
 
 

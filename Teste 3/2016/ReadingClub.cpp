@@ -90,24 +90,30 @@ void ReadingClub::setBestReaderCandidates(priority_queue<User>& candidates) {
 //
 
 void ReadingClub::generateCatalog() {
-	//TODO:
-	//...
 
 }
 
 vector<Book*> ReadingClub::getAvailableItems(Book* book) const {
-	vector<Book*> temp;
-	//TODO:
-	//...
-
-	return temp;
+    vector<Book*> temp;
+    for(BSTItrIn<BookCatalogItem> it(catalogItems); !it.isAtEnd(); it.advance()){
+        if(it.retrieve() == BookCatalogItem(book->getTitle(),book->getAuthor(),0)){
+            for(auto elem: it.retrieve().getItems()){
+                if(elem->getReader() == nullptr){
+                    temp.push_back(elem);
+                }
+            }
+        }
+    }
+    return temp;
 }
 
-bool ReadingClub::borrowBookFromCatalog(Book* book, User* reader) {
-	//TODO:
-	//...
 
-	return false;
+bool ReadingClub::borrowBookFromCatalog(Book* book, User* reader) {
+	auto aux = getAvailableItems(book);
+    if(aux.empty()) return false;
+    aux[0]->setReader(reader);
+    reader->addReading(aux[0]->getTitle(),aux[0]->getAuthor());
+	return true;
 }
 
 
