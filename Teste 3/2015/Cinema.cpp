@@ -4,7 +4,7 @@
 #include "Cinema.h"
 
 Cinema::Cinema(string nm, unsigned d, unsigned nr): name(nm), distance(d),
-		numberOfRooms(nr),timetable(FilmTime(0,NULL, 0))
+numberOfRooms(nr),timetable(FilmTime(0,NULL, 0))
 {}
 
 Cinema::Cinema(string nm, unsigned d, unsigned nr, list<string> ls): name(nm), distance(d),
@@ -36,38 +36,100 @@ void Cinema::addFilmTime(const FilmTime &ft1)
 
 bool Cinema::operator<(const Cinema & cr) const
 {
-	//TODO: Implement a correct version of the operator
-	return true;
+	if(distance==cr.getDistance())
+		return services.size()<cr.services.size();
+	else
+		return distance>cr.getDistance();
 }
 
 
 //a1
 Film *Cinema::filmAtHour(unsigned &h1) const {
 	Film *res = NULL;
+	BST<FilmTime> tempTable = timetable;
 
-	// TODO
+	while(!tempTable.isEmpty()){
+		FilmTime temp = tempTable.findMax();
+
+		if(temp.getHour()<h1){
+			h1=temp.getHour();
+			return temp.getFilm();
+		}
+		else if (temp.getHour()==h1){
+			return temp.getFilm();
+		}
+		else{
+			tempTable.remove(temp);
+		}
+	}
+
 
 	return res;
 }
 
 
 //a2
+
+bool Cinema::isRoomBusy(unsigned room, unsigned h) const{
+	BSTItrIn<FilmTime> it(timetable);
+
+	while(!it.isAtEnd()){
+
+		FilmTime temp = it.retrieve();
+
+		if(temp.getHour()==h && temp.getRoomID()==room)
+			return true;
+
+		it.advance();
+	}
+
+	return false;
+
+}
+
 bool Cinema::modifyHour(unsigned h1, unsigned room1, unsigned h2) {
-	bool res;
 
-	// TODO
+	if(isRoomBusy(room1,h2))
+		return false;
 
-	return res;
+	BSTItrIn<FilmTime> it(timetable);
+
+	while(!it.isAtEnd()){
+		FilmTime temp = it.retrieve();
+		if(temp.getRoomID()==room1 && temp.getHour()==h1){
+			timetable.remove(temp);
+			temp.setHour(h2);
+			timetable.insert(temp);
+			return true;
+		}
+
+		it.advance();
+	}
+
+	return false;
 }
 
 
 //a3
 unsigned Cinema::addFilm(Film *f1, unsigned h1) {
-	unsigned roomToUse = 0;
+	unsigned counter=1;
+	BSTItrIn<FilmTime> it(timetable);
 
-	// TODO
+	while(!it.isAtEnd()){
+		FilmTime temp = it.retrieve();
 
-	return roomToUse;
+		if(temp.getHour()==h1)
+			counter++;
+
+		it.advance();
+	}
+
+	if(counter<=numberOfRooms){
+		FilmTime f(h1,f1,counter);
+		timetable.insert(f);
+		return counter;
+	}
+	else return 0;
 }
 
 

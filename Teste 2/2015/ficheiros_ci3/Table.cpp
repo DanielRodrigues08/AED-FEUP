@@ -6,6 +6,7 @@
  */
 
 #include "Table.h"
+#include <iostream>
 
 using namespace std;
 
@@ -80,11 +81,16 @@ void Table::putOn(vector<Dish*> dishes) {
  * Clears this table, by picking up all dishes on every place.
  * Returns the picked up dishes.
  */
+
 vector<Dish*> Table::clear() {
-	vector<Dish*> dishes;
-
-	// TODO
-
-	return dishes;
+    vector<Dish*> dishes;
+    for(unsigned int i = 0; i < places.size(); i++){
+        unsigned int stacksize = places.at(i).size();
+        for(unsigned int j = 0; j < stacksize; j++){
+            dishes.push_back(places.at(i).top());
+            places.at(i).pop();
+        }
+    }
+    return dishes;
 }
 

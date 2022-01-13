@@ -113,7 +113,7 @@ void test_C_() {
 	ASSERT_EQUAL(true, t0_changed.empty());
 	ASSERT_EQUAL(0, r.getDirty().size()-n_dirty);
 
-	n_dirty = r.getDirty().size();
+    n_dirty = r.getDirty().size();
 	r.clearTable(1);
 	Table t1_changed = r.getTable(1);
 	ASSERT_EQUAL(true, t1_changed.empty());
@@ -126,6 +126,7 @@ void test_C_() {
 	ASSERT_EQUAL(3, r.getDirty().size()-n_dirty);
 
 	r.clearTable(3);
+
 
 }
 
@@ -263,9 +264,10 @@ void test_F_() {
 	ASSERT_EQUAL(drying.size(), dry_grouped.size());
 	ASSERT_EQUAL(0, r.getDrying().size());
 
-//	for(list<Dish*>::iterator it = dry_grouped.begin(); it != dry_grouped.end(); ++it) {
-//		cout << (*it)->getCollection() << " " << (*it)->getType() << endl;
-//	}
+//
+	for(list<Dish*>::iterator it = dry_grouped.begin(); it != dry_grouped.end(); ++it) {
+		cout << (*it)->getCollection() << " " << (*it)->getType() << endl;
+	}
 
 	list<Dish*>::iterator it = dry_grouped.begin();
 	while(it != dry_grouped.end()) {

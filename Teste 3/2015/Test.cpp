@@ -221,7 +221,7 @@ void test_c1() {
 
 	Cinema c1("NS", 20, 4);
 	c1.addService("estacionamento");
-	c1.addService("restauração");
+	c1.addService("restauraï¿½ï¿½o");
 	c1.addService("comercio");
 
 	Cinema c2("Arrabida", 10, 4);
@@ -229,7 +229,7 @@ void test_c1() {
 
 	Cinema c3("PN", 20, 4);
 	c3.addService("estacionamento");
-	c3.addService("restauração");
+	c3.addService("restauraï¿½ï¿½o");
 
 	Cinema c4("GS", 8, 4);
 
@@ -253,7 +253,7 @@ void test_c2() {
 
 	Cinema c1("NS", 20, 4);
 	c1.addService("estacionamento");
-	c1.addService("restauração");
+	c1.addService("restauraï¿½ï¿½o");
 	c1.addService("comercio");
 
 	Cinema c2("Arrabida", 12, 4);
@@ -261,7 +261,7 @@ void test_c2() {
 
 	Cinema c3("PN", 20, 4);
 	c3.addService("estacionamento");
-	c3.addService("restauração");
+	c3.addService("restauraï¿½ï¿½o");
 
 	Cinema c4("GS", 8, 4);
 
@@ -291,7 +291,7 @@ void runSuite(){
 	s.push_back(CUTE(test_c1));
 	s.push_back(CUTE(test_c2));
 	cute::ide_listener<> lis;
-	cute::makeRunner(lis)(s, "AEDA 2015/2016 - Avaliação - 16/dez - Testes Unitarios Estudantes");
+	cute::makeRunner(lis)(s, "AEDA 2015/2016 - Avaliaï¿½ï¿½o - 16/dez - Testes Unitarios Estudantes");
 }
 
 int main(){

@@ -32,6 +32,7 @@ public:
 	Film *filmAtHour(unsigned &h1) const;
 	bool modifyHour(unsigned h1, unsigned room1, unsigned h2);
 	unsigned addFilm(Film *f1, unsigned h1);
+	bool isRoomBusy(unsigned room, unsigned h) const;
 };
 
 

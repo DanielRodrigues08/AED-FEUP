@@ -42,7 +42,7 @@ CMAKE_CODEBLOCKS_MAKE_ARGUMENTS:STRING=
 CMAKE_COLOR_MAKEFILE:BOOL=ON
 
 //CXX compiler
-CMAKE_CXX_COMPILER:FILEPATH=C:/MinGW/bin/g++.exe
+CMAKE_CXX_COMPILER:STRING=C:/MinGW/bin/g++.exe
 
 //A wrapper around 'ar' adding the appropriate '--plugin' option
 // for the GCC compiler
@@ -71,7 +71,7 @@ CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
 CMAKE_CXX_STANDARD_LIBRARIES:STRING=-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
 
 //C compiler
-CMAKE_C_COMPILER:FILEPATH=C:/MinGW/bin/gcc.exe
+CMAKE_C_COMPILER:STRING=C:/MinGW/bin/gcc.exe
 
 //A wrapper around 'ar' adding the appropriate '--plugin' option
 // for the GCC compiler
@@ -321,10 +321,16 @@ INSTALL_GTEST:BOOL=ON
 aed2122_p06_BINARY_DIR:STATIC=C:/Users/danie/CLionProjects/AED/TP6/cmake-build-debug
 
 //Value Computed by CMake
+aed2122_p06_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
 aed2122_p06_SOURCE_DIR:STATIC=C:/Users/danie/CLionProjects/AED/TP6
 
 //Value Computed by CMake
 gmock_BINARY_DIR:STATIC=C:/Users/danie/CLionProjects/AED/TP6/cmake-build-debug/lib/googletest-master/googlemock
+
+//Value Computed by CMake
+gmock_IS_TOP_LEVEL:STATIC=OFF
 
 //Dependencies for the target
 gmock_LIB_DEPENDS:STATIC=general;gtest;
@@ -342,10 +348,16 @@ gmock_main_LIB_DEPENDS:STATIC=general;gmock;
 googletest-distribution_BINARY_DIR:STATIC=C:/Users/danie/CLionProjects/AED/TP6/cmake-build-debug/lib/googletest-master
 
 //Value Computed by CMake
+googletest-distribution_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
 googletest-distribution_SOURCE_DIR:STATIC=C:/Users/danie/CLionProjects/AED/TP6/lib/googletest-master
 
 //Value Computed by CMake
 gtest_BINARY_DIR:STATIC=C:/Users/danie/CLionProjects/AED/TP6/cmake-build-debug/lib/googletest-master/googletest
+
+//Value Computed by CMake
+gtest_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
 gtest_SOURCE_DIR:STATIC=C:/Users/danie/CLionProjects/AED/TP6/lib/googletest-master/googletest
@@ -383,9 +395,9 @@ CMAKE_CACHEFILE_DIR:INTERNAL=c:/Users/danie/CLionProjects/AED/TP6/cmake-build-de
 //Major version of cmake used to create the current loaded cache
 CMAKE_CACHE_MAJOR_VERSION:INTERNAL=3
 //Minor version of cmake used to create the current loaded cache
-CMAKE_CACHE_MINOR_VERSION:INTERNAL=20
+CMAKE_CACHE_MINOR_VERSION:INTERNAL=21
 //Patch version of cmake used to create the current loaded cache
-CMAKE_CACHE_PATCH_VERSION:INTERNAL=2
+CMAKE_CACHE_PATCH_VERSION:INTERNAL=1
 //ADVANCED property for variable: CMAKE_COLOR_MAKEFILE
 CMAKE_COLOR_MAKEFILE-ADVANCED:INTERNAL=1
 //Path to CMake executable.
@@ -539,7 +551,7 @@ CMAKE_RC_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_READELF
 CMAKE_READELF-ADVANCED:INTERNAL=1
 //Path to CMake installation.
-CMAKE_ROOT:INTERNAL=C:/Program Files/JetBrains/CLion 2021.2.3/bin/cmake/win/share/cmake-3.20
+CMAKE_ROOT:INTERNAL=C:/Program Files/JetBrains/CLion 2021.2.3/bin/cmake/win/share/cmake-3.21
 //ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS
 CMAKE_SHARED_LINKER_FLAGS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS_DEBUG

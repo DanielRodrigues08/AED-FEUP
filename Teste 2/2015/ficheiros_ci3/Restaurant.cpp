@@ -58,9 +58,8 @@ const list<Dish*>& Restaurant::getDrying() const {
  * Adds a number of dishes of a collection/type to the respective clean stack.
  */
 void Restaurant::addDishes(unsigned int n, string collection, TypeOfDish type) {
-
-	// TODO
-
+    for(unsigned i = 0; i < n; i++)
+        getCleanDishStack(collection, type).push(new Dish(collection,type));
 }
 
 /**
@@ -68,29 +67,39 @@ void Restaurant::addDishes(unsigned int n, string collection, TypeOfDish type) {
  * Returns the washed dish.
  */
 Dish* Restaurant::washDish() {
-	Dish* d;
-
-	// TODO
-
+	Dish* d = dirty.front();
+    dirty.pop();
+    drying.push_back(d);
 	return d;
 }
 
 /**
  * Clears a table, placing all dishes that are on it in the dirty queue.
  */
+
 void Restaurant::clearTable(vector<Table>::size_type idx) {
-
-	// TODO
-
+    if(idx < tables.size()) {
+        vector<Dish*> aux = tables[idx].clear();
+        for(auto idx: aux){
+            dirty.push(idx);
+        }
+    }
 }
 
 /**
  * Stores in the respective clean stack all drying dishes of a given collection and type.
  */
 void Restaurant::storeDryDishes(string collection, TypeOfDish type) {
-
-	// TODO
-
+    int counter = 0;
+    for(auto it = drying.begin(); it != drying.end(); it++){
+        if((*it)->getCollection() == collection && (*it)->getType()==type){
+            counter++;
+            it = drying.erase(it);
+            it--;
+        }
+    }
+    if(counter != 0)
+        addDishes(counter, collection, type);
 }
 
 /**
@@ -99,8 +108,21 @@ void Restaurant::storeDryDishes(string collection, TypeOfDish type) {
  * Throws NotEnoughDishesException when there are not enough clean plates of the collection.
  */
 void Restaurant::setupTable(vector<Table>::size_type idx, string collection) {
+    if(idx < tables.size()){
+        if(!tables[idx].empty())
+            throw TableNotReadyException();
+        if(tables[idx].getPlaces().size() >= getCleanDishStack(collection, Plate).size())
+            throw NotEnoughDishesException();
 
-	// TODO
+        vector<Dish*> aux;
+        for(int i = 0; i < tables[idx].getPlaces().size(); i++){
+            aux.push_back(getCleanDishStack(collection, Plate).top());
+            getCleanDishStack(collection, Plate).pop();
+        }
+
+        tables[idx].putOn(aux);
+
+    }
 
 }
 
@@ -108,12 +130,16 @@ void Restaurant::setupTable(vector<Table>::size_type idx, string collection) {
  * Picks the dry dishes and groups them.
  * Returns the grouped dishes.
  */
+bool compareDishPointers(const Dish* d1, const Dish* d2){
+    if(d1->getCollection() > d2->getCollection())
+        return true;
+    return d1->getType() == d2->getType() && d1->getCollection() == d2->getCollection();
+}
 list<Dish*> Restaurant::pickupAndGroupDryDishes() {
-	list<Dish*> dry_grouped;
-
-	// TODO
-
-	return dry_grouped;
+	list<Dish*> dry_grouped = drying;
+    dry_grouped.sort(compareDishPointers);
+    drying.clear();
+    return dry_grouped;
 }
 
 /**
@@ -121,9 +147,23 @@ list<Dish*> Restaurant::pickupAndGroupDryDishes() {
  * Returns the number of stacks that have been updated.
  */
 int Restaurant::storeGroupedDishes(list<Dish*> grouped_dishes) {
+    int counter = 0;
+    auto itList = grouped_dishes.begin();
+    while(itList != grouped_dishes.end()){
+        int counterTemp = 1;
+        string collection = (*itList)->getCollection();
+        TypeOfDish type = (*itList) ->getType();
+        itList++;
+        if(itList != grouped_dishes.end()){
+            while ((*itList)->getCollection() == collection && (*itList) ->getType() == type && itList != grouped_dishes.end()){
+                    counterTemp++;
+                    itList++;
+                }
+            }
 
-	// TODO
-
-	return 0;
+        addDishes(counterTemp,collection,type);
+        counter++;
+    }
+	return counter;
 }
 
