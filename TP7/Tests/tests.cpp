@@ -315,7 +315,7 @@ TEST(test_4, rightRotate) {
     bt1.rightRotate(25);
     EXPECT_FALSE(bt1 == bt2);
     EXPECT_TRUE(bt1 == bt3);
-    /*
+
     cout << "  . Outros casos" << endl;
     BST<int> bt2_1(-1), bt3_1(-1);
     bt2.rightRotate(42);
@@ -349,7 +349,7 @@ TEST(test_4, rightRotate) {
     bt4.rightRotate(75);
     bt4_7.insert({30,40,20,35,10,70,90,55,80,87,71,72,75,73,74});
     EXPECT_TRUE(bt4 == bt4_7);
-*/
+
 
 
 }

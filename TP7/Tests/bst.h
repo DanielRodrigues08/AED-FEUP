@@ -550,9 +550,11 @@ void BST<Comparable>::rightRotate(const Comparable& x) {
         BinaryNode<Comparable>* pivot (node->left);
         node->left = pivot->right;
         pivot->right = node;
-        node = pivot;
+        return pivot;
     }
 }
+
+void auxRightRotate()
 
 
 
