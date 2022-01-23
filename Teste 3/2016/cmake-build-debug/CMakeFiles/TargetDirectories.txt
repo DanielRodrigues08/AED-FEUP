@@ -1,3 +1,0 @@
-C:/Users/danie/CLionProjects/AED/Teste 3/2016/cmake-build-debug/CMakeFiles/2016.dir
-C:/Users/danie/CLionProjects/AED/Teste 3/2016/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/danie/CLionProjects/AED/Teste 3/2016/cmake-build-debug/CMakeFiles/rebuild_cache.dir

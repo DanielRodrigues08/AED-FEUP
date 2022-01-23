@@ -1,8 +1,0 @@
-# ninja log v5
-3	1821	6608883652308268	CMakeFiles/ficheiros_ci3.dir/Dish.cpp.obj	823d59ffc85e2a44
-52	2319	6608883657382343	CMakeFiles/ficheiros_ci3.dir/Table.cpp.obj	b80d4a07ccfddcff
-3	1343	6608885850851402	CMakeFiles/ficheiros_ci3.dir/Restaurant.cpp.obj	4cd0effe83cd564f
-56	3310	6608883667276143	CMakeFiles/ficheiros_ci3.dir/Test.cpp.obj	5f59378c690cadd2
-1343	2434	6608885861728867	ficheiros_ci3.exe	11a956b9d2095784
-3	1651	6608886010296038	CMakeFiles/ficheiros_ci3.dir/Restaurant.cpp.obj	4cd0effe83cd564f
-1652	2727	6608886021001386	ficheiros_ci3.exe	11a956b9d2095784

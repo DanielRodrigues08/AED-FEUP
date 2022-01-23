@@ -1,3 +1,0 @@
-C:/Users/danie/CLionProjects/AED/Teste 2/2015/ficheiros_ci2/cmake-build-debug/CMakeFiles/ficheiros_ci2.dir
-C:/Users/danie/CLionProjects/AED/Teste 2/2015/ficheiros_ci2/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/danie/CLionProjects/AED/Teste 2/2015/ficheiros_ci2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
