@@ -22,14 +22,16 @@ struct StudentPtrHash
 {
 	int operator() (const StudentPtr& student) const
 	{
-		//TODO:
-		return 0;
+		int v = 0;
+		for(const auto& elem: student.getEMail()){
+            v = v+37 + elem;
+        }
+        return v;
 	}
 
 	bool operator() (const StudentPtr& student1, const StudentPtr& student2) const
-	{
-		//TODO:
-		return true;
+    {
+		return student1.getEMail() == student2.getEMail();
 	}
 };
 
