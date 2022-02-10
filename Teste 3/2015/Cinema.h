@@ -27,6 +27,12 @@ public:
 	BST<FilmTime> getTimetable() const;
 	void addService(string service1);
 	void addFilmTime(const FilmTime &ft1);
+    bool hasService(const string &service) const{
+        for(auto service1: services)
+            if(service1 == service)
+                return true;
+        return false;
+    }
 
 	bool operator<(const Cinema & c1) const;  //TODO: Implement a correct version of the operator
 	Film *filmAtHour(unsigned &h1) const;

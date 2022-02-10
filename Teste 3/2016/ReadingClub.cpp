@@ -122,15 +122,14 @@ bool ReadingClub::borrowBookFromCatalog(Book* book, User* reader) {
 //
 
 void ReadingClub::addUserRecord(User* user) {
-	//TODO:
-	//...
-
+    userRecords.insert(UserRecord(user));
 }
 
 void ReadingClub::changeUserEMail(User* user, string newEMail) {
-	//TODO:
-	//...
-
+    UserRecord temp = UserRecord(user);
+    userRecords.erase(temp);
+    temp.setEMail(newEMail);
+    userRecords.insert(temp);
 }
 
 
@@ -139,16 +138,29 @@ void ReadingClub::changeUserEMail(User* user, string newEMail) {
 //
 
 void ReadingClub::addBestReaderCandidates(const vector<User>& candidates, int min) {
-	//TODO:
-	//...
-
+    for(const auto& element: candidates){
+        if(element.numReadings() >= min)
+            readerCandidates.push(element);
+    }
 }
 
 int ReadingClub::awardReaderChampion(User& champion) {
-	//TODO:
-	//...
+    if(readerCandidates.empty()) return 0;
+    if(readerCandidates.size() == 1){
+        champion = readerCandidates.top();
+        return 1;
+    }
 
-	return 0;
+    auto aux = readerCandidates;
+    User user1 = aux.top();
+    aux.pop();
+    User user2 = aux.top();
+
+    if(user1.numReadings() == user2.numReadings())
+        return 0;
+
+    champion = user1;
+	return readerCandidates.size();
 }
 
 

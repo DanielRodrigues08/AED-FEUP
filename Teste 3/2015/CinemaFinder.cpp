@@ -32,76 +32,47 @@ priority_queue<Cinema> CinemaFinder::getCinemas() const
 
 //b1
 list<string> CinemaFinder::filmsWithActor(string actorName) const {
-	list<string> res;
-
-	for(tabHFilm::const_iterator it = films.begin();it!=films.end();it++){
-		if((*it).film->actorExists(actorName))
-			res.push_back((*it).film->getTitle());
-	}
-
-	return res;
+    list<string> result;
+    for(auto film : films){
+        if(film.film->actorExists(actorName))
+            result.push_back(film.film->getTitle());
+    }
+    return result;
 }
 
 
 //b2
 void CinemaFinder::addActor(string filmTitle, string actorName) {
+    for(auto film : films){
+        if(film.film->getTitle()==filmTitle){
+            film.film->addActor(actorName);
+            return;
+        }
+    }
 
-	for(tabHFilm::iterator it = films.begin();it!=films.end();it++){
-		if((*it).film->getTitle()==filmTitle){
-			(*it).film->addActor(actorName);
-			return;
-		}
-	}
-
-	Film* temp = new Film(filmTitle);
-	FilmPtr fp;
-	fp.film=temp;
-
-	films.insert(fp);
-
+    Film* film = new Film(filmTitle);
+    films.insert({film});
 }
 
 
 //c1
 string CinemaFinder::nearestCinema(string service1) const {
-	string cName="";
-
-	priority_queue<Cinema> temp = cinemas;
-	list<string> ser;
-
-	while(!temp.empty()){
-		ser = temp.top().getServices();
-		for(list<string>::const_iterator it = ser.begin();it!=ser.end();it++){
-			if(*it==service1)
-				return temp.top().getName();
-		}
-		temp.pop();
-	}
-
-	return cName;
+    auto aux = cinemas;
+    while(!aux.empty()) {
+        if (aux.top().hasService(service1))
+            return aux.top().getName();
+        aux.pop();
+    }
+    return "";
 }
 
 
 //c2
 void CinemaFinder::addServiceToNearestCinema(string service1, unsigned maxDistance) {
-
-	if(cinemas.empty())
-		throw CinemaNotFound();
-
-	priority_queue<Cinema> temp = cinemas;
-
-	while(!temp.empty()){
-		Cinema cin = temp.top();
-
-		if(cin.getDistance()<maxDistance){
-			cin.addService(service1);
-			temp.pop();
-			temp.push(cin);
-			cinemas=temp;
-			return;
-		}
-		temp.pop();
-	}
-
-	throw CinemaNotFound();
+    if(cinemas.empty()) throw CinemaNotFound();
+    if(cinemas.top().getDistance() >= maxDistance) throw CinemaNotFound();
+    auto aux = cinemas.top();
+    cinemas.pop();
+    aux.addService(service1);
+    cinemas.push(aux);
 }
