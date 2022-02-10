@@ -166,7 +166,7 @@ void test_a3_marcaConsulta() {
 
 
 void test_b1_fimConsulta() {
-	/*
+
 	Clinica cli;
 	Animal a1=cli.fimConsulta("bobby","cao");
 	ASSERT_EQUAL("bobby", a1.getNome());
@@ -186,11 +186,11 @@ void test_b1_fimConsulta() {
 	ASSERT_EQUAL(1, a1.getNumConsultas());
 
 	ASSERT_EQUAL(3,cli.getAnimais().size());
-	*/
+
 }
 
 void test_b2_numEspecie() {
-	/*
+
 	Clinica cli;
 
 	Animal a1("bobby", "cao");
@@ -204,11 +204,11 @@ void test_b2_numEspecie() {
 	cli.addAnimal(a4);
 	cli.addAnimal(a5);
 	ASSERT_EQUAL(3,cli.numAnimaisEspecie("cao"));
-	*/
+
 }
 
 void test_c1_alocaVeterinario() {
-	/*
+
 	Clinica cli;
 
 	Veterinario vet1("Joao Santos");
@@ -240,11 +240,11 @@ void test_c1_alocaVeterinario() {
 	ASSERT_EQUAL("Maria Silva", vetX.getNome());
 	ASSERT_EQUAL(3,vetX.getAnimais().size());
 	ASSERT_EQUAL(3,cli.getVeterinarios().size());
-	*/
+
 }
 
 void test_c2_veterinariosMaisN() {
-	/*
+
 	Clinica cli;
 
 	Veterinario vet1("Joao Santos");
@@ -276,7 +276,7 @@ void test_c2_veterinariosMaisN() {
 
 	res=cli.veterinariosMaisN(6);
 	ASSERT_EQUAL(0,res.size());
-	*/
+
 }
 
 void runSuite(){
@@ -289,7 +289,7 @@ void runSuite(){
 	s.push_back(CUTE(test_b2_numEspecie));
 	s.push_back(CUTE(test_c1_alocaVeterinario));
 	s.push_back(CUTE(test_c2_veterinariosMaisN));
-	cute::ide_listener lis;
+	cute::ide_listener<> lis;
 	cute::makeRunner(lis)(s, "The Suite");
 }
 

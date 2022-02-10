@@ -62,12 +62,14 @@ public:
 
 struct hAnimal {
 	int operator()(const Animal& a1) const{
-		//TODO: Implementar a funcao de dispersao e substituir corretamente o valor do return!
-		return -1;
+		int counter = 0;
+        for(const auto& element: a1.getNome()){
+            counter = 37*counter + element;
+        }
+        return counter;
 	}
 	bool operator()(const Animal& a1, const Animal& a2) const {
-		//TODO: Implementar a funcao de igualdade e substituir corretamente o valor do return!
-		return true;
+		return a1.getNome() == a2.getNome();
 	}
 };
 
@@ -87,15 +89,16 @@ public:
 	void addVeterinario(const Veterinario &v1);
 
 	//TODO: a realizar de acordo com o solicitado nas respectivas alíneas!
-	/*
-	void addConsultas(const vector<Consulta> consultas1, string nomeVet);
-	list<Consulta> veConsultasDisponiveis(int dia1, int dia2, int mesC, string nomeVet) const;
-	bool marcaConsulta(int &horaC, int &diaC, int &mesC, string nomeAnimal, string nomeVet);
-	Animal fimConsulta(string umNomeAnimal, string umNomeEspecie);
-	int numAnimaisEspecie(string umNomeEspecie) const;
-	Veterinario alocaVeterinario(string umNomeAnimal);
-	list<string> veterinariosMaisN(int n) const;
-	*/
+    /*
+    void addConsultas(const vector<Consulta> consultas1, string nomeVet);
+    list<Consulta> veConsultasDisponiveis(int dia1, int dia2, int mesC, string nomeVet) const;
+    bool marcaConsulta(int &horaC, int &diaC, int &mesC, string nomeAnimal, string nomeVet);
+    */
+    Animal fimConsulta(string umNomeAnimal, string umNomeEspecie);
+    int numAnimaisEspecie(string umNomeEspecie) const;
+    Veterinario alocaVeterinario(string umNomeAnimal);
+    list<string> veterinariosMaisN(int n) const;
+
 };
 
 #endif /* CLINICA_H_ */

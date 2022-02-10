@@ -77,23 +77,71 @@ void Clinica::addVeterinario(const Veterinario &v1)
 { veterinarios.push(v1); }
 
 
-/////////////////////////////////////////////////////////////////////////
-
-
-//TODO: Implementar corretamente o construtor e inicializacao da BST!
 ConsultasVet::ConsultasVet(string umNomeVet): nomeVeterinario(umNomeVet),
 		minhasConsultas(Consulta(0,0,0))
 {}
 
 
 bool Consulta::operator < (const Consulta &c2) const {
-	//TODO: Implementar corretamente o operador
-	return true;
+	if(getMes() == c2.getMes() && getDia() == c2.getDia())
+        return getHora() < c2.getHora();
+    if(getMes() == getMes())
+        return getDia() < c2.getDia();
+    return getMes() < c2.getMes();
 }
 
 bool Veterinario::operator<(const Veterinario& v1) const
 {
-	//TODO: Implementar corretamente o operador
-	return true;
+    if(meusAnimais.size()==v1.getAnimais().size())
+        return nome > v1.getNome();
+    else
+        return meusAnimais.size()>v1.getAnimais().size();
+}
+
+
+
+Animal Clinica::fimConsulta(string umNomeAnimal, string umNomeEspecie) {
+    for(auto element: animais){
+        if(element.getNome() == umNomeAnimal){
+            animais.erase(element);
+            element.incNumConsultas();
+            animais.insert(element);
+            return  element;
+        }
+    }
+    Animal animal(umNomeAnimal, umNomeEspecie);
+    animal.incNumConsultas();
+    animais.insert(animal);
+    return animal;
+}
+
+int Clinica::numAnimaisEspecie(string umNomeEspecie) const {
+    int counter = 0;
+    for(auto element: animais){
+        if(element.getEspecie() == umNomeEspecie){
+            counter++;
+        }
+    }
+    return counter;
+}
+
+Veterinario Clinica::alocaVeterinario(string umNomeAnimal) {
+    Veterinario vet = veterinarios.top();
+    veterinarios.pop();
+    vet.addAnimal(umNomeAnimal);
+    veterinarios.push(vet);
+    return vet;
+}
+
+list<string> Clinica::veterinariosMaisN(int n) const {
+    list<string> result;
+    auto aux = veterinarios;
+    while(!aux.empty()){
+        if(aux.top().getAnimais().size() > n)
+            result.push_front(aux.top().getNome());
+        aux.pop();
+    }
+
+    return result;
 }
 
