@@ -121,7 +121,7 @@ void test_a3_delVinhoNome() {
 }
 void test_b1_addVinicola() {
 
-/*	Cooperativa c;
+	Cooperativa c;
 	c.addVinicola("Quinta da Aveleda");
 	c.addVinicola("Casa Agricola Quinta do Falcao");
 	c.addVinicola("Sogrape Vinhos");
@@ -143,13 +143,13 @@ void test_b1_addVinicola() {
 	c.addVinicola("Herdade dos Coelheiros");
 	ASSERT_EQUAL(4, hv.size());
 
-	ASSERT_EQUAL(2,(c.getVinicolas().begin())->getVinhos());*/
+	ASSERT_EQUAL(2,(c.getVinicolas().begin())->getVinhos());
 
 }
 
 void test_b2_maisOpcoes() {
 
-/*	Cooperativa c;
+	Cooperativa c;
 	hashVinicola hv;
 
 	Vinicola v1("Quinta da Aveleda");
@@ -171,14 +171,14 @@ void test_b2_maisOpcoes() {
 	v4.setVinhos(3);
 	c.add_Vinicola(v4);
 	vx=c.maisOpcoes();
-	ASSERT_EQUAL("Sogrape Vinhos",vx.getNome());*/
+	ASSERT_EQUAL("Sogrape Vinhos",vx.getNome());
 
 }
 
 
 void test_c1_addEnologoVinicola() {
 
-/*	Cooperativa c;
+	Cooperativa c;
 
 	c.addEnologoVinicola("Pedro", "Cartuxa");
 	ASSERT_EQUAL(1, c.getEnologos().size());
@@ -193,8 +193,7 @@ void test_c1_addEnologoVinicola() {
 	c.addEnologoVinicola("Americo", "Herdade do Sol");
 	c.addEnologoVinicola("Americo", "Herdade do Sol");
 	ASSERT_EQUAL(3, c.getEnologos().size());
-	ASSERT_EQUAL("Americo", c.getEnologos().top().getNome());*/
-
+	ASSERT_EQUAL("Americo", c.getEnologos().top().getNome());
 }
 
 void test_c2_vinicolasMelhoresNEnologos() {
@@ -257,7 +256,7 @@ void runSuite(){
 	s.push_back(CUTE(test_b2_maisOpcoes));
 	s.push_back(CUTE(test_c1_addEnologoVinicola));
 	s.push_back(CUTE(test_c2_vinicolasMelhoresNEnologos));
-	cute::ide_listener lis;
+	cute::ide_listener<> lis;
 	cute::makeRunner(lis)(s, "The Suite");
 }
 

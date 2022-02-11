@@ -38,7 +38,11 @@ public:
 	void setVinhos(int vs) { vinhos = vs; }
 	void addVinho() { vinhos++; }
 
-	bool operator<(const Vinicola& v1) const;
+	bool operator<(const Vinicola& v1) const{
+        if(vinhos == v1.getVinhos())
+            return nome > v1.getNome();
+        return vinhos > v1.vinhos;
+    }
 	bool operator==(const Vinicola& v1) const;
 };
 
@@ -50,6 +54,12 @@ public:
 	string getNome() const { return nome; };
 	list<Vinicola> getVinicolas() const { return vinicolas; };
 	void addVinicolaInexistente(const Vinicola &v1) { vinicolas.push_back(v1); }
+    int getNumVinhos() const{
+        int counter = 0;
+        for(auto element: vinicolas){
+            counter += element.getVinhos();
+        }
+    }
 	bool operator<(const Enologo& e1) const;
 	bool operator==(const Enologo& e1) const;
 };
@@ -57,13 +67,15 @@ public:
 struct hVinicola {
 
 	int operator()(const Vinicola& v1) const{
-		//TODO: Implementar corretamente a funcao de dispersao!
-		return 0;
+		int counter = 0;
+        for(const auto& element: v1.getNome()){
+            counter = 37*counter + element;
+        }
+        return counter;
 	}
 
 	bool operator()(const Vinicola& v1, const Vinicola& v2) const {
-		//TODO: Implementar corretamente a funcao de comparacao!
-		return false;
+		return v1.getNome() == v2.getNome();
 	}
 
 };
